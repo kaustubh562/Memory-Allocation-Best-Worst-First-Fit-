@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Memory Allocation Simulator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="brand">
+            <div class="brand-icon">OS</div>
+            <div>
+                <h2>Memory<span>Lab</span></h2>
+                <p>OPERATING SYSTEM SIMULATOR</p>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            System Ready
+        </div>
+    </header>
+
+    <main class="dashboard">
+
+        <section class="hero">
+            <p class="eyebrow">OPERATING SYSTEMS / MEMORY MANAGEMENT</p>
+
+            <h1>Memory Allocation<br><span>Simulator</span></h1>
+
+            <p class="hero-text">
+                Analyze and compare First Fit, Best Fit and Worst Fit
+                algorithms through an interactive memory allocation system.
+            </p>
+        </section>
+
+        <section class="workspace">
+
+            <div class="panel input-panel">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">CONFIGURATION</p>
+                        <h2>Memory Setup</h2>
+                    </div>
+                    <span class="number">01</span>
+                </div>
+
+                <label for="blocks">Memory Blocks (KB)</label>
+                <input type="text" id="blocks"
+                    value="100, 500, 200, 300, 600">
+
+                <small>Enter block sizes separated by commas.</small>
+
+                <label for="processes">Process Sizes (KB)</label>
+                <input type="text" id="processes"
+                    value="212, 417, 112, 426">
+
+                <small>Enter process sizes separated by commas.</small>
+
+                <button class="reset-btn" id="resetBtn">
+                    Reset Configuration
+                </button>
+            </div>
+
+            <div class="panel algorithm-panel">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">ALGORITHM CONTROL</p>
+                        <h2>Select Strategy</h2>
+                    </div>
+                    <span class="number">02</span>
+                </div>
+
+                <button class="algorithm-btn" data-method="first">
+                    <span class="algorithm-icon">01</span>
+                    <span class="algorithm-info">
+                        <strong>First Fit</strong>
+                        <small>Allocate the first suitable block</small>
+                    </span>
+                    <span class="arrow">→</span>
+                </button>
+
+                <button class="algorithm-btn" data-method="best">
+                    <span class="algorithm-icon">02</span>
+                    <span class="algorithm-info">
+                        <strong>Best Fit</strong>
+                        <small>Allocate the smallest suitable block</small>
+                    </span>
+                    <span class="arrow">→</span>
+                </button>
+
+                <button class="algorithm-btn" data-method="worst">
+                    <span class="algorithm-icon">03</span>
+                    <span class="algorithm-info">
+                        <strong>Worst Fit</strong>
+                        <small>Allocate the largest suitable block</small>
+                    </span>
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <div class="results-heading">
+                <div>
+                    <p class="section-label">LIVE ANALYTICS</p>
+                    <h2>Allocation Results</h2>
+                </div>
+                <span class="result-tag" id="resultTag">AWAITING INPUT</span>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <p>Total Memory</p>
+                    <h3 id="totalMemory">—</h3>
+                    <span>KB available initially</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Allocated Processes</p>
+                    <h3 id="allocatedCount">—</h3>
+                    <span>Successfully allocated</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Failed Processes</p>
+                    <h3 id="failedCount">—</h3>
+                    <span>Could not be allocated</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Remaining Memory</p>
+                    <h3 id="remainingMemory">—</h3>
+                    <span>KB across all blocks</span>
+                </div>
+            </div>
+
+            <div class="panel table-panel">
+                <div class="table-heading">
+                    <h3 id="tableTitle">Allocation Details</h3>
+                    <p id="tableSubtitle">
+                        Select an algorithm to generate the report.
+                    </p>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PROCESS</th>
+                                <th>SIZE (KB)</th>
+                                <th>ALLOCATED BLOCK</th>
+                                <th>REMAINING (KB)</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr>
+                                <td colspan="5" class="empty-state">
+                                    No results available. Select an
+                                    allocation algorithm to begin.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-line"></div>
+            <p>MemoryLab · Memory Management Simulator</p>
+            <p>Educational Project · Operating Systems</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
